@@ -79,3 +79,52 @@
   border-radius: 7px;
   cursor: pointer;
 }
+
+/* Les boutons */
+.student-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+/* Style commun */
+.student-actions button,
+.contact-button {
+  background-color: #f1dfbd;
+  color: #654b32;
+  border: none;
+  padding: 9px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-family: Arial, sans-serif;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+/* Effet au survol */
+.student-actions button:hover,
+.contact-button:hover {
+  background-color: #d8b77e;
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(100, 75, 40, 0.2);
+}
+
+/* Bouton Modifier */
+.edit-button {
+  background-color: #e8d5ad !important;
+}
+
+/* Bouton Supprimer */
+.delete-button {
+  background-color: #e8d5ad !important;
+}
+
+/* Bouton Afficher / Masquer */
+.coordinates-button {
+  background-color: #e8d5ad;
+}
