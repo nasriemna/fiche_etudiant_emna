@@ -13,3 +13,146 @@
     padding: 15px;
   }
 }
+
+
+/* ===== BOUTON AJOUTER ===== */
+
+.actions {
+  display: flex;
+  justify-content: center;
+  margin: 30px auto;
+}
+
+.actions button {
+  background: linear-gradient(135deg, #2563eb, #4f46e5);
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+  box-shadow: 0 5px 15px rgba(37, 99, 235, 0.2);
+}
+
+.actions button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+  background: linear-gradient(135deg, #1d4ed8, #4338ca);
+}
+
+/* ===== BARRE DE RECHERCHE ===== */
+
+.filter-container {
+  width: 100%;
+  max-width: 550px;
+  margin: 25px auto 35px;
+  padding: 0 15px;
+}
+
+.filter-container input {
+  width: 100%;
+  padding: 15px 20px;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  background: white;
+  color: #1e293b;
+  font-size: 15px;
+  outline: none;
+  transition: 0.3s ease;
+  box-sizing: border-box;
+}
+
+.filter-container input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.12);
+}
+
+.filter-container input::placeholder {
+  color: #94a3b8;
+}
+
+/* ===== MESSAGE AUCUN RESULTAT ===== */
+
+.no-results {
+  text-align: center;
+  color: #64748b;
+  font-size: 16px;
+  margin: 30px auto;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 600px) {
+  .actions button {
+    width: 90%;
+    padding: 13px;
+  }
+
+  .filter-container {
+    width: 100%;
+  }
+}
+
+/* Bouton Ajouter */
+
+.actions {
+  display: flex;
+  justify-content: center;
+  margin: 30px auto;
+}
+
+.actions button {
+  background: linear-gradient(135deg, #2563eb, #4f46e5);
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 5px 15px rgba(37, 99, 235, 0.2);
+}
+
+.actions button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+}
+
+/* Recherche */
+
+.filter-container {
+  width: 90%;
+  max-width: 550px;
+  margin: 25px auto 35px;
+}
+
+.filter-container input {
+  width: 100%;
+  padding: 15px 20px;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  background: white;
+  color: #1e293b;
+  font-size: 15px;
+  outline: none;
+  box-sizing: border-box;
+  transition: 0.3s;
+}
+
+.filter-container input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.12);
+}
+
+.filter-container input::placeholder {
+  color: #94a3b8;
+}
+
+.no-results {
+  text-align: center;
+  color: #64748b;
+  margin: 30px;
+}
