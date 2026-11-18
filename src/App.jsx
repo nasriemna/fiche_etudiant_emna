@@ -1,14 +1,18 @@
-
 import './App.css';
 import Header from './components/Header';
 import Navbar from './components/Navbar';
 import StudentCard from './components/StudentCard';
 import Footer from './components/Footer';
+import StudentForm from './StudentForm';
+
 import { useState } from "react";
 
-function App() {
+// import ya3ni njibou haja men fichier ekher bech nesta3mlouha fi fichier App.jsx
+function App() { // Fi React App hiya le composant principal eli yjamma3 les autres composants
 
   const [etudiants, setEtudiants] = useState([
+    // useState t5allina n5aznou des données w ki yetbaddlou, React ya3mel mise à jour de l'affichage automatiquement
+
     {
       id: 1,
       nom: "Emna Nasri",
@@ -20,6 +24,7 @@ function App() {
       ville: "Gafsa",
       photo: "/emna.jpg"
     },
+
     {
       id: 2,
       nom: "Slim Boubaker",
@@ -31,6 +36,7 @@ function App() {
       ville: "Tunis",
       photo: "/slim.jpg"
     },
+
     {
       id: 3,
       nom: "Sarra Trabelsi",
@@ -46,41 +52,40 @@ function App() {
 
   const [recherche, setRecherche] = useState("");
 
+  // =====================================================
   // AJOUTER UN ETUDIANT
-  function ajouterEtudiant() {
-  const nom = prompt("Entrez le nom et prénom de l'étudiant :");
+  // =====================================================
 
-  if (nom === null || nom.trim() === "") {
-    return;
+  function ajouterEtudiant(nouvelEtudiant) {
+
+    const etudiantAvecId = {
+      id: Date.now(),
+      ...nouvelEtudiant
+    };
+
+    setEtudiants(anciens => [
+      ...anciens,
+      etudiantAvecId
+    ]);
   }
 
-  const nomImage = nom.trim().split(" ")[0];
 
-  const nouvelEtudiant = {
-    id: Date.now(),
-    nom: nom,
-    email: `${nomImage.toLowerCase()}@gmail.com`,
-    telephone: "44444444",
-    filiere: "GLSI",
-    annee: "2ème année",
-    groupe: "Groupe 1",
-    ville: "Sfax",
-    photo: `/${nomImage}.jpg`
-  };
-
-  setEtudiants([...etudiants, nouvelEtudiant]);
-}
-
+  // =====================================================
   // SUPPRIMER UN ETUDIANT
+  // =====================================================
+
   function supprimerEtudiant(id) {
 
-    setEtudiants(anciens =>
-      anciens.filter(etudiant => etudiant.id !== id)
+    setEtudiants(etudiants =>
+      etudiants.filter(etudiant => etudiant.id !== id)
     );
-
   }
 
+
+  // =====================================================
   // MODIFIER TOUTES LES INFORMATIONS
+  // =====================================================
+
   function modifierEtudiant(id) {
 
     const etudiant = etudiants.find(e => e.id === id);
@@ -115,23 +120,26 @@ function App() {
       anciens.map(e =>
         e.id === id
           ? {
-              ...e,
-              nom: nouveauNom.trim(),
-              email: nouvelEmail.trim(),
-              telephone: nouveauTelephone.trim(),
-              filiere: nouvelleFiliere.trim(),
-              annee: nouvelleAnnee.trim(),
-              groupe: nouveauGroupe.trim(),
-              ville: nouvelleVille.trim(),
-              photo: nouvellePhoto.trim()
-            }
+            ...e,
+            nom: nouveauNom.trim(),
+            email: nouvelEmail.trim(),
+            telephone: nouveauTelephone.trim(),
+            filiere: nouvelleFiliere.trim(),
+            annee: nouvelleAnnee.trim(),
+            groupe: nouveauGroupe.trim(),
+            ville: nouvelleVille.trim(),
+            photo: nouvellePhoto.trim()
+          }
           : e
       )
     );
-
   }
 
+
+  // =====================================================
   // RECHERCHE DANS TOUS LES CHAMPS
+  // =====================================================
+
   const etudiantsFiltres = etudiants.filter(etudiant => {
 
     const texte = [
@@ -142,32 +150,56 @@ function App() {
       etudiant.annee,
       etudiant.groupe,
       etudiant.ville
-    ].join(" ").toLowerCase();
+    ]
+      .join(" ")
+      .toLowerCase();
 
-    return texte.includes(recherche.toLowerCase().trim());
-
+    return texte.includes(
+      recherche.toLowerCase().trim()
+    );
   });
+
+
+  // =====================================================
+  // AFFICHAGE
+  // =====================================================
 
   return (
     <div className="page">
 
       <Header />
+
       <Navbar />
 
-      <div className="actions" id="d">
-        <button onClick={ajouterEtudiant}>
-          + Ajouter un étudiant
-        </button>
-      </div>
+
+      {/* ==========================================
+          FORMULAIRE D'AJOUT
+          ========================================== */}
+
+      <StudentForm
+        onAjouterEtudiant={ajouterEtudiant}
+      />
+
+
+      {/* ==========================================
+          RECHERCHE
+          ========================================== */}
 
       <div className="filter-container">
+
         <input
           type="text"
           placeholder="Rechercher un étudiant..."
           value={recherche}
           onChange={(e) => setRecherche(e.target.value)}
         />
+
       </div>
+
+
+      {/* ==========================================
+          LISTE DES ETUDIANTS
+          ========================================== */}
 
       <div id="etudiants" className="students-list">
 
@@ -175,6 +207,7 @@ function App() {
 
           <StudentCard
             key={etudiant.id}
+
             photo={etudiant.photo}
             nom={etudiant.nom}
             email={etudiant.email}
@@ -183,19 +216,29 @@ function App() {
             annee={etudiant.annee}
             groupe={etudiant.groupe}
             ville={etudiant.ville}
+
+            // MODIFIER
             onEdit={() => modifierEtudiant(etudiant.id)}
+
+            // SUPPRIMER
             onDelete={() => supprimerEtudiant(etudiant.id)}
           />
 
         ))}
 
+
+        {/* Aucun résultat */}
+
         {etudiantsFiltres.length === 0 && (
+
           <p className="no-results">
             Aucun étudiant trouvé.
           </p>
+
         )}
 
       </div>
+
 
       <Footer />
 

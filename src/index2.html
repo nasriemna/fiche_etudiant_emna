@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <fieldset>
+        <form>
+            <label for="nom">Nom:</label>
+            <input type="text" id="nom" placeholder="Saisir votre nom" required />
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" />
+
+            <button type="submit">Envoyer</button>
+            <label for="filiere" htmlfor="filiere">Filiere:</label>
+            <select id="filiere" name="filiere" required>
+                <option value="">Choisir une filiére</option>
+                <option value="GLSI">GLSI</option>
+                <option value="LCS">LCS</option>
+                <option value="LBC">LBC</option>
+            </select>
+            <label for="description">Description: </label>
+            <textarea id="description" name="description" rows="4" cols="30"
+                placeholder="Saisir une description..."></textarea>
+            <button type="submit">Ajouter</button>
+            <button type="reset">Réinitialiser</button>
+
+        </form>
+    </fieldset>
+</body>
+
+</html>
+/*const nom = prompt("Entrez le nom et prénom de l'étudiant :");
+//l'utilisateur 3mal Annuler
+if (nom === null || nom.trim() === "") { //Hné nesta3mlou if bech net2akdou elli l'utilisateur d5al esm s7i7
+return; //l'utilisateur 5alla el champ feragh
+}//to93ed l'execution ama to5rej ml fonction
+//[0]:le 1ere element
+const nomImage = nom.trim().split(" ")[0]; //trim():Tna7i les espaces zeydin men début w fin du texte(supprimer les
+espaces)
+//split():diviser le texte selon les espaces
+//ex:Emna Nasri → ["Emna", "Nasri"] → Emna
+const nouvelEtudiant = {
+id: Date.now(),
+nom: nom,
+email: `${nomImage.toLowerCase()}@gmail.com`, //${...} : permet d'insérer une variable dans une chaîne de caractères
+telephone: "44444444",
+filiere: "GLSI",
+annee: "2ème année",
+groupe: "Groupe 1",
+ville: "Sfax",
+photo: `/${nomImage}.jpg`*/

@@ -59,8 +59,7 @@ function StudentCard(props) {
           className="coordinates-button"
           onClick={basculerCoordonnees}
         >
-          {coordonneesVisibles
-            ? "Masquer les coordonnées"
+          {coordonneesVisibles? "Masquer les coordonnées"
             : "Afficher les coordonnées"}
         </button>
 
